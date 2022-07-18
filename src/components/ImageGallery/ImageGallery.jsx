@@ -7,18 +7,17 @@ const ImageGallery = ({ images, onClick, loadMore }) => {
   return (
     <>
       <List>
-        {images.map(image => (
+        {images.map(({ id, webformatURL, tags, largeImageURL }) => (
           <ImageGalleryItem
-            key={image.id}
-            id={image.id}
-            smallImg={image.webformatURL}
-            // largeImg={image.largeImageURL}
-            description={image.tags}
+            key={id}
+            id={id}
+            smallImg={webformatURL}
+            description={tags}
             onClick={() =>
               onClick({
-                id: image.id,
-                url: image.largeImageURL,
-                alt: image.tags,
+                id: id,
+                url: largeImageURL,
+                alt: tags,
               })
             }
           />

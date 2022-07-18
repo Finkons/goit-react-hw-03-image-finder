@@ -11,7 +11,7 @@ const Searchbar = ({ onSubmit }) => {
     const searchQuery = e.currentTarget.elements.query.value;
     if (searchQuery.trim() === '') {
       toast.error('The search cannot be performed without a query', {
-        position: 'top-center',
+        position: 'top-right',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,

@@ -14,7 +14,7 @@ export const Overlay = styled.div`
   transition-property: transform, opacity, visibility;
   transition-duration: 250ms;
   transition-delay: cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 2;
+  z-index: 201;
 `;
 
 export const ModalWindow = styled.div`

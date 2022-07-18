@@ -13,6 +13,7 @@ export const Wrapper = styled.header`
   padding-top: 12px;
   padding-bottom: 12px;
   color: #fff;
+  z-index: 200;
   background: #355c7d
   background: -webkit-linear-gradient(circle, rgba(254,124,10,1) 11%, rgba(12,0,255,1) 100%));
   background: radial-gradient(circle, rgba(254,124,10,1) 11%, rgba(12,0,255,1) 100%);

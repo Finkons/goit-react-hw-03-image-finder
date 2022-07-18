@@ -6,20 +6,20 @@ const modalRoot = document.querySelector('#modal-root');
 
 class Modal extends Component {
   componentDidMount() {
-    window.addEventListener('keydown', this.onClickForEscape);
+    window.addEventListener('keydown', this.onClickEscape);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.onClickForEscape);
+    window.removeEventListener('keydown', this.onClickEscape);
   }
 
-  onClickForEscape = e => {
+  onClickEscape = e => {
     if (e.code === 'Escape') {
       this.props.onClose();
     }
   };
 
-  onClickForOverlay = e => {
+  onClickOverlay = e => {
     if (e.target === e.currentTarget) {
       this.props.onClose();
     }
@@ -27,7 +27,7 @@ class Modal extends Component {
   render() {
     const { chooseImage } = this.props;
     return createPortal(
-      <Overlay onClick={this.onClickForOverlay}>
+      <Overlay onClick={this.onClickOverlay}>
         <ModalWindow>
           <ModalImage src={chooseImage.url} alt={chooseImage.alt} />
         </ModalWindow>

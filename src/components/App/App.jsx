@@ -83,14 +83,12 @@ export class App extends Component {
           loadMore={this.loadMore}
         />
         {loading && <Loader />}
-        {showModal &&
-          ((<Loader />),
-          (
-            <Modal
-              chooseImage={this.state.chooseImage}
-              onClose={this.toggleShowModal}
-            />
-          ))}
+        {showModal && (
+          <Modal
+            chooseImage={this.state.chooseImage}
+            onClose={this.toggleShowModal}
+          />
+        )}
         <ToastContainer />
       </Container>
     );
