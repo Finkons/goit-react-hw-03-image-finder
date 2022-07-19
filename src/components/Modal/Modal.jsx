@@ -25,11 +25,11 @@ class Modal extends Component {
     }
   };
   render() {
-    const { chooseImage } = this.props;
+    const { activeUrl, alt, onClose } = this.props;
     return createPortal(
       <Overlay onClick={this.onClickOverlay}>
-        <ModalWindow>
-          <ModalImage src={chooseImage.url} alt={chooseImage.alt} />
+        <ModalWindow onClick={onClose}>
+          <ModalImage src={activeUrl} alt={alt} />
         </ModalWindow>
       </Overlay>,
       modalRoot

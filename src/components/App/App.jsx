@@ -12,33 +12,21 @@ export class App extends Component {
     searchQuery: '',
     page: 1,
     images: [],
-    chooseImage: null,
-    showModal: false,
+    url: null,
     loading: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { searchQuery, page } = this.state;
 
-    if (prevState.searchQuery !== searchQuery) {
-      this.setState({ images: [] });
-    }
     if (prevState.searchQuery !== searchQuery || prevState.page !== page) {
       this.fetchSearchQuery();
       return;
     }
-
-    if (prevState.chooseImage !== this.state.chooseImage) {
-      this.toggleShowModal();
-    }
   }
 
-  searchQuery = query => {
-    this.setState({ searchQuery: query, page: 1 });
-  };
-
-  chooseImage = image => {
-    this.setState({ chooseImage: image });
+  getSearchQuery = query => {
+    this.setState({ searchQuery: query, page: 1, images: [] });
   };
 
   fetchSearchQuery = async () => {
@@ -65,30 +53,24 @@ export class App extends Component {
     }));
   };
 
-  toggleShowModal = () => {
-    this.setState(({ showModal }) => ({
-      showModal: !showModal,
-    }));
-  };
+  openModal = activeUrl => this.setState({ url: activeUrl });
+
+  closeModal = () => this.setState({ url: '' });
 
   render() {
-    const { showModal, loading } = this.state;
+    const { url, loading, images } = this.state;
+    const { openModal, closeModal, loadMore } = this;
 
     return (
       <Container>
-        <Searchbar onSubmit={this.searchQuery} />
+        <Searchbar onSubmit={this.getSearchQuery} />
         <ImageGallery
-          images={this.state.images}
-          onClick={this.chooseImage}
-          loadMore={this.loadMore}
+          images={images}
+          onImageClick={openModal}
+          loadMore={loadMore}
         />
         {loading && <Loader />}
-        {showModal && (
-          <Modal
-            chooseImage={this.state.chooseImage}
-            onClose={this.toggleShowModal}
-          />
-        )}
+        {url && <Modal activeUrl={url} alt={url} onClose={closeModal} />}
         <ToastContainer />
       </Container>
     );

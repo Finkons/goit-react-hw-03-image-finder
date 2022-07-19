@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { Item, Image } from './ImageGalleryItem.styled';
 
-const ImageGalleryItem = ({ id, smallImg, description, onClick }) => {
+const ImageGalleryItem = ({ id, smallImg, description, openModal }) => {
   return (
     <Item>
-      <Image src={smallImg} alt={description} id={id} onClick={onClick} />
+      <Image src={smallImg} alt={description} id={id} onClick={openModal} />
     </Item>
   );
 };

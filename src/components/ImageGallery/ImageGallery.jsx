@@ -3,7 +3,7 @@ import Button from 'components/Button';
 import ImageGalleryItem from './ImageGalleryItem';
 import { List } from './ImageGallery.styled';
 
-const ImageGallery = ({ images, onClick, loadMore }) => {
+const ImageGallery = ({ images, onImageClick, loadMore }) => {
   return (
     <>
       <List>
@@ -13,13 +13,7 @@ const ImageGallery = ({ images, onClick, loadMore }) => {
             id={id}
             smallImg={webformatURL}
             description={tags}
-            onClick={() =>
-              onClick({
-                id: id,
-                url: largeImageURL,
-                alt: tags,
-              })
-            }
+            openModal={() => onImageClick(largeImageURL)}
           />
         ))}
       </List>
